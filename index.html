@@ -122,6 +122,12 @@ footer{background:#041f33;color:rgba(255,255,255,.75);text-align:center;font-siz
 .form input:focus,.form textarea:focus{outline:none;border-color:var(--sun);box-shadow:0 0 0 3px rgba(255,122,61,.18)}
 .form button{margin-top:14px;cursor:pointer;width:100%;justify-content:center}
 .consent{font-size:13px;color:var(--muted);margin:10px 0 0}
+.req{color:#b9470f}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cf-btns{display:grid;gap:10px;grid-template-columns:1fr}@media(min-width:520px){.cf-btns{grid-template-columns:1fr 1fr}}
+.form .cf-btns .btn{margin-top:14px}.form .btn.alt{background:#fff;color:var(--deep);border:2px solid var(--lake);box-shadow:none}
+.form input[aria-invalid="true"]{border-color:#b42318;box-shadow:0 0 0 3px rgba(180,35,24,.15)}
+#cf-msg:empty{display:none}#cf-msg.err{color:#b42318;font-weight:700}
+.cf-fallback a{font-weight:700}
 .guidecard{background:linear-gradient(135deg,var(--lake),var(--deep));color:#fff;border-radius:20px;padding:24px}
 .guidecard ol{margin:12px 0 18px;padding-left:22px}.guidecard li{margin:6px 0}
 .faq details{background:#fff;border-radius:14px;padding:0 18px;margin:0 0 10px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
@@ -251,14 +257,19 @@ footer a{color:var(--gold)}
   <h2 class="fade">Free website checkup for your business</h2>
   <p class="lead fade">Send me your business name and your current website or Facebook page. I'll look at it on a phone the way your customers do and send you a short, plain-English list of what's working and what to fix. It's free, and there's no obligation.</p>
   <div class="magnet">
-    <form class="card form fade" id="checkup-form" novalidate>
-      <label for="cf-name">Your name</label><input id="cf-name" name="name" autocomplete="name" required>
-      <label for="cf-biz">Business name</label><input id="cf-biz" name="business" autocomplete="organization" required>
+    <form class="card form fade" id="checkup-form" action="mailto:noahbuildssites@gmail.com" method="post" enctype="text/plain" novalidate aria-describedby="cf-how">
+      <p class="consent" id="cf-req" style="margin-top:0">Fields marked <span aria-hidden="true">*</span><span class="sr">with an asterisk</span> are required.</p>
+      <label for="cf-name">Your name <span class="req" aria-hidden="true">*</span></label><input id="cf-name" name="name" autocomplete="name" required aria-required="true">
+      <label for="cf-biz">Business name <span class="req" aria-hidden="true">*</span></label><input id="cf-biz" name="business" autocomplete="organization" required aria-required="true">
       <label for="cf-link">Website or Facebook page (if you have one)</label><input id="cf-link" name="link" inputmode="url" placeholder="e.g. facebook.com/yourshop">
-      <label for="cf-contact">Best email or phone to reach you</label><input id="cf-contact" name="contact" autocomplete="email" required>
-      <button class="btn" type="submit">Send my free checkup request</button>
-      <p class="consent">This opens your email app with your request filled in, addressed to noahbuildssites@gmail.com. Just hit send. By sending it, you agree I can email, call or text you back about your request. No mailing list, no spam. See my <a href="privacy.html">privacy policy</a>.</p>
+      <label for="cf-contact">Best email or phone to reach you <span class="req" aria-hidden="true">*</span></label><input id="cf-contact" name="contact" autocomplete="email" required aria-required="true">
+      <div class="cf-btns">
+        <button class="btn" type="submit" id="cf-email" data-via="email"><span aria-hidden="true">✉️</span> Send by email</button>
+        <button class="btn alt" type="button" id="cf-text" data-via="sms"><span aria-hidden="true">💬</span> Send by text</button>
+      </div>
+      <p class="consent" id="cf-how">Either button opens your own email or texting app with your request filled in, addressed to noahbuildssites@gmail.com or 904-532-0193. Just hit send. By sending it, you agree I can email, call or text you back about your request. No mailing list, no spam. See my <a href="privacy.html">privacy policy</a>.</p>
       <p class="consent" id="cf-msg" role="status" aria-live="polite"></p>
+      <p class="consent cf-fallback">Form not working? Email <a href="mailto:noahbuildssites@gmail.com?subject=Free%20website%20checkup">noahbuildssites@gmail.com</a>, or call or text <a href="tel:+19045320193">904-532-0193</a> (<a href="sms:+19045320193">send a text</a>).</p>
     </form>
     <div class="guidecard fade">
       <div class="eyebrow" style="color:var(--gold)">Free guide</div>
@@ -309,12 +320,26 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 </script>
 <script>
 (function(){var f=document.getElementById('checkup-form');if(!f)return;var m=document.getElementById('cf-msg');
-f.addEventListener('submit',function(e){e.preventDefault();var g=function(id){return document.getElementById(id).value.trim()};
-  var n=g('cf-name'),b=g('cf-biz'),l=g('cf-link'),c=g('cf-contact');
-  if(!n||!b||!c){m.textContent='Please fill in your name, business name, and an email or phone number.';return;}
+var EMAIL='noahbuildssites@gmail.com',PHONE='+19045320193',PHONE_TXT='904-532-0193';
+var mobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+if(mobile){var bt=f.querySelector('.cf-btns'),t=document.getElementById('cf-text');bt.insertBefore(t,bt.firstChild);}
+function v(id){return document.getElementById(id).value.trim()}
+function check(){var bad=[];['cf-name','cf-biz','cf-contact'].forEach(function(id){var el=document.getElementById(id),ok=!!el.value.trim();el.setAttribute('aria-invalid',ok?'false':'true');if(!ok)bad.push(el)});
+  if(bad.length){m.className='consent err';m.textContent='Please fill in your name, business name, and an email or phone number.';bad[0].focus();return false}return true}
+function send(via){if(!check())return;var n=v('cf-name'),b=v('cf-biz'),l=v('cf-link'),c=v('cf-contact');
   var body='Hi Noah,\n\nI\'d like a free website checkup.\n\nName: '+n+'\nBusiness: '+b+'\nWebsite or Facebook: '+(l||'(none yet)')+'\nBest way to reach me: '+c+'\n\nThanks!';
-  location.href='mailto:noahbuildssites@gmail.com?subject='+encodeURIComponent('Free website checkup: '+b)+'&body='+encodeURIComponent(body);
-  m.textContent='Your email app should open now with your request filled in. If it doesn\'t, email noahbuildssites@gmail.com or call/text 904-532-0193.';});})();
+  m.className='consent';
+  if(via==='sms'){
+    location.href='sms:'+PHONE+'?&body='+encodeURIComponent(body);
+    m.textContent='Your texting app should open now with your request filled in. If it doesn\'t, text '+PHONE_TXT+' or email '+EMAIL+'.';
+  }else{
+    location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Free website checkup: '+b)+'&body='+encodeURIComponent(body);
+    m.textContent='Your email app should open now with your request filled in. If it doesn\'t, email '+EMAIL+' or call/text '+PHONE_TXT+'.';
+  }}
+f.addEventListener('submit',function(e){e.preventDefault();send('email')});
+document.getElementById('cf-text').addEventListener('click',function(){send('sms')});
+f.addEventListener('input',function(e){if(e.target.getAttribute('aria-invalid')==='true'&&e.target.value.trim())e.target.setAttribute('aria-invalid','false')});
+})();
 </script>
 </body>
 </html>
