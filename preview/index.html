@@ -582,7 +582,7 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
    <p class="lead reveal">Send me your business name and your current website or Facebook page. I'll look at it on a phone the way your customers do and send you a short, plain-English list of what's working and what to fix. It's free, and there's no obligation.</p>
   </div>
   <div class="magnet">
-    <form class="form reveal" id="checkup-form" action="mailto:noahbuildssites@gmail.com" method="post" enctype="text/plain" novalidate aria-describedby="cf-how">
+    <form class="form reveal" id="checkup-form" novalidate aria-describedby="cf-how">
       <p class="consent" id="cf-req" style="margin-top:0">Fields marked <span aria-hidden="true">*</span><span class="sr">with an asterisk</span> are required.</p>
       <label for="cf-name">Your name <span class="req" aria-hidden="true">*</span></label><input id="cf-name" name="name" autocomplete="name" required aria-required="true">
       <label for="cf-biz">Business name <span class="req" aria-hidden="true">*</span></label><input id="cf-biz" name="business" autocomplete="organization" required aria-required="true">
@@ -593,6 +593,7 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
         <button class="btn btn-alt" type="button" id="cf-text" data-via="sms"><svg class="ic" aria-hidden="true"><use href="#i-msg"/></svg> Send by text</button>
       </div>
       <p class="consent" id="cf-how">Either button opens your own email or texting app with your request filled in, addressed to noahbuildssites@gmail.com or 904-532-0193. Just hit send. By sending it, you agree I can email, call or text you back about your request. No mailing list, no spam. See my <a href="privacy.html">privacy policy</a>.</p>
+      <noscript><p class="consent">JavaScript is off, so these buttons won't open your apps. Email <a href="mailto:noahbuildssites@gmail.com">noahbuildssites@gmail.com</a> or call/text <a href="tel:+19045320193">904-532-0193</a> instead.</p></noscript>
       <p class="consent" id="cf-msg" role="status" aria-live="polite"></p>
       <p class="consent cf-fallback">Form not working? Email <a href="mailto:noahbuildssites@gmail.com?subject=Free%20website%20checkup">noahbuildssites@gmail.com</a>, or call or text <a href="tel:+19045320193">904-532-0193</a> (<a href="sms:+19045320193">send a text</a>).</p>
     </form>
