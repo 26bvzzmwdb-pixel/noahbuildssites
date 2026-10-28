@@ -27,7 +27,7 @@
 <meta name="twitter:title" content="Noah Builds Sites | Sandusky, OH Web Design">
 <meta name="twitter:description" content="Modern, phone-first websites for Sandusky-area small businesses. $300 setup + $40/month, nothing due until you approve.">
 <meta name="twitter:image" content="https://26bvzzmwdb-pixel.github.io/noahbuildssites/img/og.jpg">
-<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230a2540'/><text x='32' y='45' font-size='36' text-anchor='middle' fill='%23f26b1d' font-family='Arial,Helvetica,sans-serif' font-weight='800'>N</text></svg>">
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": ["LocalBusiness", "ProfessionalService"], "name": "Noah Builds Sites", "url": "https://26bvzzmwdb-pixel.github.io/noahbuildssites/", "email": "noahbuildssites@gmail.com", "telephone": "+1-904-532-0193", "founder": {"@type": "Person", "name": "Noah Kurek"}, "areaServed": ["Sandusky, OH", "Huron, OH", "Norwalk, OH", "Port Clinton, OH", "Vermilion, OH", "Milan, OH", "Castalia, OH", "Bellevue, OH"], "address": {"@type": "PostalAddress", "streetAddress": "306 W Water Street", "addressLocality": "Sandusky", "addressRegion": "OH", "postalCode": "44870", "addressCountry": "US"}, "description": "Simple, mobile-friendly websites for small businesses in the Sandusky, Ohio area.", "@id": "https://26bvzzmwdb-pixel.github.io/noahbuildssites/#business", "image": "https://26bvzzmwdb-pixel.github.io/noahbuildssites/img/og.jpg", "logo": "https://26bvzzmwdb-pixel.github.io/noahbuildssites/img/apple-touch-icon.png", "priceRange": "$$", "contactPoint": {"@type": "ContactPoint", "telephone": "+1-904-532-0193", "email": "noahbuildssites@gmail.com", "contactType": "customer service", "areaServed": "US-OH", "availableLanguage": "English"}, "makesOffer": [{"@type": "Offer", "name": "Website Setup", "description": "Custom one-page, mobile-friendly website with tap-to-call, hours, services and map. Due only after you approve the finished site.", "price": "300", "priceCurrency": "USD"}, {"@type": "Offer", "name": "Hosting & Care Plan", "description": "Hosting, domain renewal, security updates and up to 2 small edits a month. Cancel anytime with 30 days' notice.", "priceSpecification": {"@type": "UnitPriceSpecification", "price": "40", "priceCurrency": "USD", "unitCode": "MON", "referenceQuantity": {"@type": "QuantitativeValue", "value": 1, "unitCode": "MON"}}}]}
@@ -105,17 +105,76 @@ p{margin:0}
 .cta-row{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s6)}
 .hero-call{margin-top:var(--s5);font-size:15px;color:rgba(255,255,255,.72)}
 .hero-call a{color:#fff;font-weight:600;white-space:nowrap}
-.hero-art{position:relative;height:440px;max-width:420px;width:100%;margin:0 auto}
-@media(max-width:959px){.hero-art{display:none}}
-.phone{position:absolute;width:210px;border-radius:34px;padding:9px;background:linear-gradient(160deg,#2a3b52,#0d1a2a);box-shadow:var(--sh-3),inset 0 0 0 1px rgba(255,255,255,.12)}
-.phone img{border-radius:26px;width:100%;height:auto;aspect-ratio:585/1170;object-fit:cover;object-position:top}
-.hero-art{animation:rise .9s var(--ease) both}@keyframes rise{from{opacity:0;transform:translateY(20px)}}
-.phone-front{left:30px;top:0;animation:float 7s ease-in-out infinite}
-.phone-back{right:10px;top:56px;transform:rotate(4deg);opacity:.92;animation:float2 8s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes float2{0%,100%{transform:rotate(4deg) translateY(0)}50%{transform:rotate(4deg) translateY(8px)}}
-.art-note{position:absolute;left:0;right:0;bottom:-34px;text-align:center;font-size:12.5px;color:rgba(255,255,255,.6)}
-
+.hero-grid{grid-template-columns:1fr!important}
+.hero-copy{max-width:880px}
+.hero h1{max-width:10.8em}
+.hl{position:relative;white-space:nowrap;background:linear-gradient(90deg,#ffb98f,#f26b1d 40%,#ffd0b0 60%,#f26b1d);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+@keyframes sheen{to{background-position:-200% 0}}
+/* before/after slider */
+.ba{margin:var(--s7) 0 0;position:relative}
+@media(min-width:960px){.ba{margin-top:var(--s8)}}
+.ba-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s3);margin-bottom:var(--s4)}
+.ba-title{font:800 clamp(22px,2.6vw,30px)/1.15 var(--f-display);color:#fff;letter-spacing:-.02em;margin:0}
+.ba-tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#ffd7bf;background:rgba(242,107,29,.14);border:1px solid rgba(242,107,29,.4);padding:6px 12px;border-radius:999px}
+.ba-3d{perspective:1800px}
+.ba-frame{--tilt:0;position:relative;border-radius:18px;background:#0d1d31;padding:0;box-shadow:0 40px 90px -20px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.1);transform:rotateX(calc(var(--tilt)*1deg));transform-origin:50% 0;will-change:transform;overflow:hidden}
+.ba-chrome{display:flex;align-items:center;gap:7px;height:36px;padding:0 14px;background:linear-gradient(#1b2d44,#14243a);border-bottom:1px solid rgba(255,255,255,.08)}
+.ba-chrome i{width:11px;height:11px;border-radius:50%;background:#3b4d64}.ba-chrome i:nth-child(1){background:#ff5f57}.ba-chrome i:nth-child(2){background:#febc2e}.ba-chrome i:nth-child(3){background:#28c840}
+.ba-url{margin-left:12px;flex:1;max-width:420px;height:22px;border-radius:6px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);font-size:12px;display:flex;align-items:center;padding:0 10px}
+.ba-stage{--pos:50%;position:relative;aspect-ratio:16/10;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;background:#ccc}
+.ba-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;pointer-events:none;-webkit-user-drag:none}
+.ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0);-webkit-clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-label{position:absolute;top:14px;z-index:2;font:800 13px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:999px;pointer-events:none;transition:opacity .25s}
+.ba-l-before{left:14px;background:rgba(20,20,20,.82);color:#fff}
+.ba-l-after{right:14px;background:var(--accent);color:var(--navy)}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:0;z-index:3}
+.ba-line:before{content:"";position:absolute;top:0;bottom:0;left:-1.5px;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(10,37,64,.25),0 0 18px rgba(0,0,0,.35)}
+.ba-handle{position:absolute;top:50%;left:0;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 6px rgba(255,255,255,.25);cursor:grab;touch-action:none;transition:transform .2s var(--ease),box-shadow .2s}
+.ba-handle:hover,.ba-stage.dragging .ba-handle{transform:scale(1.08)}
+.ba-stage.dragging .ba-handle{cursor:grabbing}
+.ba-handle:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.ba-handle svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ba-handle:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,255,255,.7);animation:ring 2.4s var(--ease) infinite}
+.ba-stage.touched .ba-handle:after{animation:none;opacity:0}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.ba-cap{margin-top:var(--s4);font-size:14px;color:rgba(255,255,255,.72);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
+.ba-cap b{color:#fff}
+.ba-hint{display:inline-flex;align-items:center;gap:6px}
+@media(max-width:640px){
+ .ba-3d{display:flex;justify-content:center}
+ .ba-frame{width:min(340px,100%);border-radius:40px;padding:10px;background:linear-gradient(160deg,#2a3b52,#0d1a2a);box-shadow:0 30px 70px -18px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.14)}
+ .ba-chrome{display:none}
+ .ba-stage{aspect-ratio:390/720;border-radius:30px}
+ .ba-label{top:auto;bottom:14px;font-size:12px}
+}
+/* difference */
+.diff{display:grid;gap:var(--s5);grid-template-columns:1fr;position:relative}
+@media(min-width:880px){.diff{grid-template-columns:1fr 1fr;gap:var(--s6)}}
+.diff-card{border-radius:var(--r-lg);padding:var(--s6);border:1px solid var(--line);background:#fff;box-shadow:var(--sh-1)}
+@media(min-width:760px){.diff-card{padding:var(--s7)}}
+.diff-old{background:repeating-linear-gradient(135deg,#fafafa 0 12px,#f4f4f4 12px 24px);color:#5b6470}
+.diff-new{background:linear-gradient(160deg,var(--navy-2),var(--navy));border-color:transparent;color:rgba(255,255,255,.85);box-shadow:var(--sh-3)}
+.diff-card h3{font-size:22px;margin-bottom:var(--s2)}.diff-new h3{color:#fff}
+.diff-k{font:700 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;margin-bottom:var(--s3);color:#8a94a1}.diff-new .diff-k{color:#ffb98f}
+.diff ul{list-style:none;padding:0;margin:var(--s5) 0 0;display:grid;gap:var(--s3)}
+.diff li{display:flex;gap:var(--s3);align-items:flex-start;line-height:1.45}
+.diff li .ic{width:22px;height:22px;border-radius:50%;padding:4px;stroke-width:3;margin-top:1px}
+.diff-old li .ic{background:#e6e8eb;color:#7a838e}
+.diff-new li .ic{background:var(--accent);color:var(--navy)}
+.diff-new li b{color:#fff}
+.vs{display:none}
+@media(min-width:880px){.vs{display:grid;place-items:center;position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:var(--sh-2);font:800 15px/1 var(--f-display);color:var(--ink);z-index:2}}
+/* progress + spotlight + shine */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:60;background:linear-gradient(90deg,var(--accent),#ffb98f);transform-origin:0 50%;transform:scaleX(var(--p,0));pointer-events:none}
+.spot{position:relative;isolation:isolate}
+.spot:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(242,107,29,.10),transparent 45%);z-index:-1}
+.spot:hover:after{opacity:1}
+.btn-primary{position:relative;overflow:hidden;isolation:isolate}
+.btn-primary:before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);transition:left .6s var(--ease);z-index:-1}
+.btn-primary:hover:before{left:120%}
+.js .reveal-scale{opacity:0;transform:scale(.96) translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .reveal-scale.in{opacity:1;transform:none}
+.section-alt{position:relative}
 /* trust */
 .trust{background:var(--navy);border-top:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.75);padding:var(--s6) 0}
 .trust-grid{display:grid;gap:var(--s5) var(--s6);grid-template-columns:1fr}
@@ -199,9 +258,9 @@ h2{font-size:clamp(30px,4.2vw,46px)}
 .facts dt{font:800 34px/1.1 var(--f-display);color:var(--ink);letter-spacing:-.03em}
 .facts dd{margin:var(--s2) 0 0;color:var(--muted);font-size:14.5px;line-height:1.45}
 .work-grid{display:grid;gap:var(--s5);grid-template-columns:1fr}
-@media(min-width:760px){.work-grid{grid-template-columns:1fr 1fr}}
-.work{display:grid;grid-template-columns:150px 1fr;gap:var(--s5);align-items:center;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s5);box-shadow:var(--sh-1);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-@media(min-width:1000px){.work{grid-template-columns:200px 1fr;padding:var(--s6)}}
+@media(min-width:760px){.work-grid{grid-template-columns:repeat(3,1fr)}}
+.work{display:grid;grid-template-columns:120px 1fr;gap:var(--s5);align-items:center;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s5);box-shadow:var(--sh-1);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+@media(min-width:760px){.work{grid-template-columns:1fr;align-items:start}.work-media{aspect-ratio:4/5}}
 .work:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
 .work-media{border-radius:18px;overflow:hidden;background:var(--alt);border:1px solid var(--line);aspect-ratio:9/14}
 .work-media img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s var(--ease)}
@@ -289,7 +348,7 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
 /* motion */
 .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.js .reveal,.js .reveal-scale{opacity:1;transform:none}.ba-frame{transform:none!important}.hl{animation:none;color:#ffb98f;background:none}}
 </style>
 </head>
 <body>
@@ -313,6 +372,7 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
   <symbol id="i-thumb" viewBox="0 0 24 24"><path d="M7 10v12M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.4 8a2 2 0 0 1-2 1.7H7V10l4-8a3 3 0 0 1 3 3.9z"/></symbol>
   <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></symbol>
   <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
  </defs>
 </svg>
@@ -329,11 +389,11 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
 </header>
 
 <div class="hero" id="top">
- <div class="hero-glow" aria-hidden="true"></div>
+ <div class="progress" id="progress" aria-hidden="true"></div>
  <div class="container hero-grid">
   <div class="hero-copy">
    <p class="kicker"><span class="dot" aria-hidden="true"></span>Local web design · Sandusky, Ohio</p>
-   <h1>A modern website for your Sandusky shop.</h1>
+   <h1>A <span class="hl">modern website</span> for your Sandusky shop.</h1>
    <p class="hero-sub">If customers only find a Facebook page, they can't quickly see your hours or call you with one tap. I'm Noah, a local Sandusky web designer, and I fix that.</p>
    <p class="hero-offer"><strong>$300 setup + $40/month.</strong> Free mockup first, and nothing is due until you approve the finished site.</p>
    <div class="cta-row">
@@ -342,12 +402,20 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
    </div>
    <p class="hero-call">Prefer to talk? Call or text Noah at <a href="tel:+19045320193">904-532-0193</a>.</p>
   </div>
-  <div class="hero-art" aria-hidden="true">
-   <div class="phone phone-back"><img src="../img/sample-salon.jpg" alt="" width="585" height="1170" fetchpriority="low"></div>
-   <div class="phone phone-front"><img src="../img/sample-auto.jpg" alt="" width="585" height="1170" fetchpriority="high"></div>
-   <p class="art-note">Sample designs, fictional businesses</p>
-  </div>
- </div>
+  <figure class="ba" id="ba" aria-labelledby="ba-title">
+   <div class="ba-head"><p class="ba-title" id="ba-title">See the difference</p><span class="ba-tag">Sample design · fictional business</span></div>
+   <div class="ba-3d"><div class="ba-frame" id="ba-frame">
+    <div class="ba-chrome" aria-hidden="true"><i></i><i></i><i></i><span class="ba-url">Sample Auto Shop (fictional)</span></div>
+    <div class="ba-stage" id="ba-stage">
+     <picture><source media="(max-width: 640px)" srcset="img/ba-after-m.webp" width="780" height="1440"><img src="img/ba-after-d.webp" width="1280" height="800" alt="After: a modern, phone-friendly website for the fictional Sample Auto Shop, with a large call button, a booking button and today's hours." fetchpriority="high"></picture>
+     <div class="ba-before" id="ba-before"><picture><source media="(max-width: 640px)" srcset="img/ba-before-m.webp" width="780" height="1440"><img src="img/ba-before-d.webp" width="1280" height="800" alt="Before: a dated, hard-to-read web page for the same fictional shop, with tiny text, a phone number you can't tap and no booking."></picture></div>
+     <span class="ba-label ba-l-before" id="ba-lb" aria-hidden="true">Before</span><span class="ba-label ba-l-after" id="ba-la" aria-hidden="true">After</span>
+     <div class="ba-line" id="ba-line"><div class="ba-handle" id="ba-handle" role="slider" tabindex="0" aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% Before, 50% After" aria-describedby="ba-help"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+    </div>
+   </div></div>
+   <figcaption class="ba-cap"><span><b>Before</b> = a dated small-business page. <b>After</b> = the kind of site I build. Both show "Sample Auto Shop", a made-up business, not a real client.</span><span class="ba-hint" id="ba-help">Drag or swipe the handle, or focus it and use the arrow keys.</span></figcaption>
+  </figure>
+</div>
 </div>
 
 <main id="main">
@@ -362,9 +430,38 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
  </div>
 </section>
 
+<section id="difference" class="section">
+ <div class="container">
+  <div class="section-head">
+   <p class="eyebrow reveal">Why it matters</p>
+   <h2 class="reveal">What a customer sees, in the first few seconds</h2>
+   <p class="lead reveal">Most people look you up on their phone before they call or visit. Here's what changes when they find a real website instead of an old page or a Facebook post.</p>
+  </div>
+  <div class="diff">
+   <div class="diff-card diff-old reveal-scale"><p class="diff-k">Without a real website</p><h3>An old page, or just Facebook</h3>
+    <ul>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Hours buried in old posts, or out of date</span></li>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>A phone number you have to copy and paste</span></li>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Tiny text you have to pinch and zoom to read</span></li>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Services and prices that aren't spelled out</span></li>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>No easy way to get directions</span></li>
+    </ul></div>
+   <span class="vs" aria-hidden="true">vs</span>
+   <div class="diff-card diff-new reveal-scale spot"><p class="diff-k">With Noah Builds Sites</p><h3>A clean, phone-first site</h3>
+    <ul>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Your hours</b>, right at the top and easy to update</span></li>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Tap-to-call</b> from any phone</span></li>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Big, readable text</b> built for phones first</span></li>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Your services</b>, laid out simply</span></li>
+     <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Map &amp; one-tap directions</b>, plus optional online booking</span></li>
+    </ul></div>
+  </div>
+ </div>
+</section>
+
 <section id="about" class="section">
  <div class="container about">
-  <figure class="about-fig reveal"><img src="../img/lighthouse.jpg" alt="Stock photo of a lighthouse on the Lake Erie shoreline" loading="lazy" width="900" height="1000"><figcaption>Lake Erie shoreline (stock photo)</figcaption></figure>
+  <figure class="about-fig reveal"><img src="img/lighthouse.jpg" alt="Stock photo of a lighthouse on the Lake Erie shoreline" loading="lazy" width="900" height="1000"><figcaption>Lake Erie shoreline (stock photo)</figcaption></figure>
   <div>
    <p class="eyebrow reveal">About me</p>
    <h2 class="reveal">A local guy who wants your shop to get found.</h2>
@@ -387,12 +484,12 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
    <p class="lead reveal">Built for phones first, because that's where people search.</p>
   </div>
   <div class="feature-grid">
-   <article class="feature reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><h3>Tap-to-call</h3><p>One tap and they're calling you.</p></article>
-   <article class="feature reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span><h3>Your hours</h3><p>Clear hours, so people know when to stop in.</p></article>
-   <article class="feature reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span><h3>Your services</h3><p>What you offer, laid out simply.</p></article>
-   <article class="feature reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><h3>Map &amp; directions</h3><p>A built-in map with one tap to directions.</p></article>
-   <article class="feature reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg></span><h3>Mobile-friendly</h3><p>Fast and good-looking on every phone.</p></article>
-   <article class="feature feature-dark reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></span><h3>Online booking <span class="badge">Optional</span></h3><p>Want customers to request appointments or order ahead online? Online booking is available as an option. Just ask.</p></article>
+   <article class="feature spot reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><h3>Tap-to-call</h3><p>One tap and they're calling you.</p></article>
+   <article class="feature spot reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span><h3>Your hours</h3><p>Clear hours, so people know when to stop in.</p></article>
+   <article class="feature spot reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span><h3>Your services</h3><p>What you offer, laid out simply.</p></article>
+   <article class="feature spot reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><h3>Map &amp; directions</h3><p>A built-in map with one tap to directions.</p></article>
+   <article class="feature spot reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg></span><h3>Mobile-friendly</h3><p>Fast and good-looking on every phone.</p></article>
+   <article class="feature feature-dark spot reveal"><span class="ic-box"><svg class="ic" aria-hidden="true"><use href="#i-cal"/></svg></span><h3>Online booking <span class="badge">Optional</span></h3><p>Want customers to request appointments or order ahead online? Online booking is available as an option. Just ask.</p></article>
   </div>
  </div>
 </section>
@@ -442,7 +539,7 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
   <div class="section-head">
    <p class="eyebrow reveal">Sample work</p>
    <h2 class="reveal">Built for local shops like yours</h2>
-   <p class="lead reveal">I've built 90+ free preview sites for Sandusky-area businesses: auto repair and detailing shops, barbers, hair and nail salons, spas and tattoo studios, restaurants, bars, bakeries and ice cream stands, pet groomers, cleaners, lawn care and local shops. Each preview is shared privately with the owner, so they aren't listed here. Below are two sample designs you can click through.</p>
+   <p class="lead reveal">I've built 90+ free preview sites for Sandusky-area businesses: auto repair and detailing shops, barbers, hair and nail salons, spas and tattoo studios, restaurants, bars, bakeries and ice cream stands, pet groomers, cleaners, lawn care and local shops. Each preview is shared privately with the owner, so they aren't listed here. Below are three sample designs you can click through. Each one uses a made-up business, placeholder details and stock photos, and shows the real features: tap-to-call, live "open now" hours, services, a map and a booking button.</p>
   </div>
   <dl class="facts reveal">
    <div><dt>90+</dt><dd>free preview sites built for Sandusky-area shops</dd></div>
@@ -451,13 +548,17 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
    <div><dt>1 tap</dt><dd>to call you, from any phone</dd></div>
   </dl>
   <div class="work-grid">
-   <a class="work reveal" href="../samples/auto/">
-    <div class="work-media"><img src="../img/sample-auto.jpg" alt="Sample design for a fictional auto repair shop" loading="lazy" width="585" height="1170"></div>
-    <div class="work-meta"><span class="badge badge-line">Sample design</span><h3>Auto repair shop</h3><p>Uses a fictional business name. Tap to open the full sample site.</p><span class="more">View sample <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+   <a class="work spot reveal" href="samples/auto/">
+    <div class="work-media"><img src="img/sample-auto.jpg" alt="Sample design for a fictional auto repair shop" loading="lazy" width="585" height="1170"></div>
+    <div class="work-meta"><span class="badge badge-line">Sample design</span><h3>Auto repair shop</h3><p>Service prices, booking requests and a live open/closed badge.</p><span class="more">View sample <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
    </a>
-   <a class="work reveal" href="../samples/salon/">
-    <div class="work-media"><img src="../img/sample-salon.jpg" alt="Sample design for a fictional hair salon" loading="lazy" width="585" height="1170"></div>
-    <div class="work-meta"><span class="badge badge-line">Sample design</span><h3>Hair salon</h3><p>Uses a fictional business name. Tap to open the full sample site.</p><span class="more">View sample <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+   <a class="work spot reveal" href="samples/salon/">
+    <div class="work-media"><img src="img/sample-salon.jpg" alt="Sample design for a fictional hair salon" loading="lazy" width="585" height="1170"></div>
+    <div class="work-meta"><span class="badge badge-line">Sample design</span><h3>Hair salon</h3><p>Elegant styling, a services menu and an appointment button.</p><span class="more">View sample <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+   </a>
+   <a class="work spot reveal" href="samples/diner/">
+    <div class="work-media"><img src="img/sample-diner.jpg" alt="Sample design for a fictional diner" loading="lazy" width="585" height="1170"></div>
+    <div class="work-meta"><span class="badge badge-line">Sample design</span><h3>Diner &amp; restaurant</h3><p>Menu favorites, order-ahead and one-tap directions.</p><span class="more">View sample <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
    </a>
   </div>
  </div>
@@ -491,7 +592,7 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
         <button class="btn btn-primary" type="submit" id="cf-email" data-via="email"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg> Send by email</button>
         <button class="btn btn-alt" type="button" id="cf-text" data-via="sms"><svg class="ic" aria-hidden="true"><use href="#i-msg"/></svg> Send by text</button>
       </div>
-      <p class="consent" id="cf-how">Either button opens your own email or texting app with your request filled in, addressed to noahbuildssites@gmail.com or 904-532-0193. Just hit send. By sending it, you agree I can email, call or text you back about your request. No mailing list, no spam. See my <a href="../privacy.html">privacy policy</a>.</p>
+      <p class="consent" id="cf-how">Either button opens your own email or texting app with your request filled in, addressed to noahbuildssites@gmail.com or 904-532-0193. Just hit send. By sending it, you agree I can email, call or text you back about your request. No mailing list, no spam. See my <a href="privacy.html">privacy policy</a>.</p>
       <p class="consent" id="cf-msg" role="status" aria-live="polite"></p>
       <p class="consent cf-fallback">Form not working? Email <a href="mailto:noahbuildssites@gmail.com?subject=Free%20website%20checkup">noahbuildssites@gmail.com</a>, or call or text <a href="tel:+19045320193">904-532-0193</a> (<a href="sms:+19045320193">send a text</a>).</p>
     </form>
@@ -500,7 +601,7 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
     <h3 id="guide-h">5 things your shop's website needs</h3>
     <p>A one-page checklist you can use today, whether or not you hire me:</p>
     <ol><li>Tap-to-call at the top of every page</li><li>Hours that are always up to date</li><li>Your services (and prices, if you can)</li><li>A map with one-tap directions</li><li>A fast, phone-first design</li></ol>
-    <a class="btn btn-light" href="../guide.html">Read the free guide <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <a class="btn btn-light" href="guide.html">Read the free guide <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
    </aside>
   </div>
  </div>
@@ -551,7 +652,7 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
   </div>
   <div>
    <h2 class="footer-h">Explore</h2>
-   <ul><li><a href="#pricing">Pricing</a></li><li><a href="#checkup">Free website checkup</a></li><li><a href="../guide.html">Free guide</a></li><li><a href="#faq">FAQ</a></li><li><a href="../privacy.html">Privacy policy</a></li></ul>
+   <ul><li><a href="#pricing">Pricing</a></li><li><a href="#checkup">Free website checkup</a></li><li><a href="guide.html">Free guide</a></li><li><a href="#faq">FAQ</a></li><li><a href="privacy.html">Privacy policy</a></li></ul>
   </div>
  </div>
  <div class="container footer-base">
@@ -562,8 +663,32 @@ a.contact-card:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,
 <nav class="callbar" aria-label="Quick contact"><a class="cb-a" href="mailto:noahbuildssites@gmail.com?subject=Free%20website%20mockup"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg> Free mockup</a><a class="cb-b" href="tel:+19045320193"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg> Call</a><a class="cb-b" href="sms:+19045320193"><svg class="ic" aria-hidden="true"><use href="#i-msg"/></svg> Text</a></nav>
 <script>
 (function(){var n=document.getElementById('nav');function s(){n.classList.toggle('solid',scrollY>24)}s();addEventListener('scroll',s,{passive:true});
-var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'});els.forEach(function(e){io.observe(e)})})();
+var els=document.querySelectorAll('.reveal,.reveal-scale');if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add('in');io.unobserve(t);setTimeout(function(){t.style.transitionDelay=''},1200)}})},{rootMargin:'0px 0px -6% 0px'});els.forEach(function(e){var sib=e.parentNode?Array.prototype.indexOf.call(e.parentNode.children,e):0;if(e.classList.contains('feature')||e.classList.contains('work')||e.classList.contains('reveal-scale'))e.style.transitionDelay=(sib%3)*90+'ms';io.observe(e)})})();
+</script>
+<script>
+(function(){
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var st=document.getElementById('ba-stage'),h=document.getElementById('ba-handle'),fr=document.getElementById('ba-frame'),lb=document.getElementById('ba-lb'),la=document.getElementById('ba-la');
+if(st){var pos=50,touched=false,anim=0;
+ function set(v,user){pos=Math.max(0,Math.min(100,v));st.style.setProperty('--pos',pos+'%');var r=Math.round(pos);h.setAttribute('aria-valuenow',r);h.setAttribute('aria-valuetext',r+'% Before, '+(100-r)+'% After');lb.style.opacity=pos<12?0:1;la.style.opacity=pos>88?0:1;if(user&&!touched){touched=true;st.classList.add('touched');cancelAnimationFrame(anim)}}
+ function fromX(x){var b=st.getBoundingClientRect();return (x-b.left)/b.width*100}
+ var drag=false;
+ var sx=0,sy=0,intent=0;st.addEventListener('pointerdown',function(e){if(e.button>0)return;drag=true;sx=e.clientX;sy=e.clientY;var onH=e.target===h||h.contains(e.target);intent=(e.pointerType==='touch'&&!onH)?0:1;st.classList.add('dragging');try{st.setPointerCapture(e.pointerId)}catch(_){}if(intent)set(fromX(e.clientX),true);if(e.pointerType==='mouse')e.preventDefault();if(e.pointerType!=='touch')h.focus({preventScroll:true})});
+ st.addEventListener('pointermove',function(e){if(!drag)return;if(!intent){var dx=Math.abs(e.clientX-sx),dy=Math.abs(e.clientY-sy);if(dy>dx&&dy>6){up();return}if(dx>6&&dx>=dy)intent=1;else return}set(fromX(e.clientX),true)});
+ function up(){drag=false;st.classList.remove('dragging')}
+ st.addEventListener('pointerup',up);st.addEventListener('pointercancel',up);st.addEventListener('lostpointercapture',up);
+ h.addEventListener('keydown',function(e){var k=e.key,d={ArrowLeft:-5,ArrowDown:-5,ArrowRight:5,ArrowUp:5,PageDown:-20,PageUp:20}[k];
+  if(d!==undefined){set(pos+(e.shiftKey?d*2:d),true);e.preventDefault()}else if(k==='Home'){set(0,true);e.preventDefault()}else if(k==='End'){set(100,true);e.preventDefault()}});
+ set(50);
+ if(!rm&&'IntersectionObserver' in window){var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){o.disconnect();setTimeout(function(){if(touched)return;var t0=performance.now(),D=2200;
+  (function step(t){if(touched)return;var k=Math.min(1,(t-t0)/D),v=50+Math.sin(k*Math.PI*2)*-22*(1-k*.25);if(k>=1)v=50;set(v);if(k<1)anim=requestAnimationFrame(step)})(t0)},500)}},{threshold:.6});o.observe(st)}
+ if(!rm&&fr&&matchMedia('(min-width: 961px)').matches){var tick=false;function tilt(){tick=false;var b=fr.getBoundingClientRect(),c=innerHeight;var k=Math.max(0,Math.min(1,(b.top-c*.18)/(c*.6)));fr.style.setProperty('--tilt',(k*10).toFixed(2))}
+  tilt();addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(tilt)}},{passive:true})}
+}
+var pg=document.getElementById('progress');if(pg){var t2=false;function pr(){t2=false;var m=document.documentElement.scrollHeight-innerHeight;pg.style.setProperty('--p',m>0?(scrollY/m).toFixed(4):0)}pr();addEventListener('scroll',function(){if(!t2){t2=true;requestAnimationFrame(pr)}},{passive:true})}
+if(!rm&&matchMedia('(hover: hover)').matches){document.querySelectorAll('.spot').forEach(function(el){el.addEventListener('pointermove',function(e){var b=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-b.left)+'px');el.style.setProperty('--my',(e.clientY-b.top)+'px')})})}
+})();
 </script>
 <script>
 (function(){var f=document.getElementById('checkup-form');if(!f)return;var m=document.getElementById('cf-msg');
